@@ -1,0 +1,12 @@
+{
+    "name": "kaswell/rubic-cube",
+    "description": "Rubic`s Cube on PHP",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Kaswell\\RubicCube\\": "src/"
+        }
+    },
+    "require": {}
+}
