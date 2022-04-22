@@ -5,9 +5,9 @@
 
 namespace Kaswell\RubicCube\Rotators;
 
-use Kaswell\RubicCube\Contracts\Models\CubeContract;
-use Kaswell\RubicCube\Contracts\Rotator\RotatorContract;
 use Kaswell\RubicCube\Contracts\Rotator\RotatorFactoryContract;
+use Kaswell\RubicCube\Contracts\Models\CubeContract as Cube;
+use Kaswell\RubicCube\Contracts\Rotator\RotatorContract as Rotator;
 use Kaswell\RubicCube\Exceptions\InvalidArgumentException;
 
 /**
@@ -16,7 +16,10 @@ use Kaswell\RubicCube\Exceptions\InvalidArgumentException;
  */
 class RotatorFactory implements RotatorFactoryContract
 {
-    private $factories = [];
+    /**
+     * @var array|string[]
+     */
+    private array $factories = [];
 
     /**
      * @param string $type
@@ -31,12 +34,12 @@ class RotatorFactory implements RotatorFactoryContract
     }
 
     /**
-     * @param CubeContract $cube
+     * @param Cube $cube
      * @param string $type
-     * @return RotatorContract
+     * @return Rotator
      * @throws InvalidArgumentException
      */
-    public function create(CubeContract $cube, string $type): RotatorContract
+    public function create(Cube $cube, string $type): Rotator
     {
         if (!isset($this->factories[$type])){
             throw new InvalidArgumentException('Unknown rotation type');

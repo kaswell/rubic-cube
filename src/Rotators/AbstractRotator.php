@@ -23,5 +23,9 @@ abstract class AbstractRotator implements RotatorContract
         $this->cube = $cube;
     }
 
+    /**
+     * @param ...$params
+     * @return Cube
+     */
     abstract public function rotate(...$params): Cube;
 }
