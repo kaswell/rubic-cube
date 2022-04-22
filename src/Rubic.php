@@ -27,9 +27,9 @@ class Rubic
     /**
      * Rubic constructor.
      */
-    public function __construct()
+    public function __construct(Config $config = new Config)
     {
-        $this->config = new Config();
+        $this->config = $config;
         $this->cube = new Cube();
     }
 
@@ -50,7 +50,7 @@ class Rubic
      */
     public function rotate(string $type = 'cube', string $route = 'x', string $direction = '+', int $line = 0)
     {
-        $rotator = new Rotator(new RotatorFactory(), $this->config, $this->cube);
+        $rotator = new Rotator(new RotatorFactory(), config: $this->config, cube: $this->cube);
 
         $this->cube = $rotator->rotate($type, $route, $direction, $line);
 

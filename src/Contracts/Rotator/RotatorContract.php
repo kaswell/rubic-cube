@@ -5,7 +5,7 @@
 
 namespace Kaswell\RubicCube\Contracts\Rotator;
 
-use Kaswell\RubicCube\Contracts\Models\CubeContract;
+use Kaswell\RubicCube\Contracts\Models\CubeContract as Cube;
 
 /**
  * Interface RotatorContract
@@ -14,13 +14,13 @@ use Kaswell\RubicCube\Contracts\Models\CubeContract;
 interface RotatorContract
 {
     /**
-     * @param CubeContract $cube
+     * @param Cube $cube
      */
-    public function __construct(CubeContract $cube);
+    public function __construct(Cube $cube);
 
     /**
      * @param ...$params
-     * @return CubeContract
+     * @return Cube
      */
-    public function rotate(...$params): CubeContract;
+    public function rotate(...$params): Cube;
 }
