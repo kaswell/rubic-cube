@@ -7,5 +7,6 @@ use Ramsey\Uuid\Uuid;
 
 require __DIR__ . '/../vendor/autoload.php';
 
+$rubic = new \Kaswell\RubicCube\Rubic();
 
-print_r(new \Kaswell\RubicCube\Models\Piece());
+print_r($rubic->rotate());

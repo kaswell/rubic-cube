@@ -22,16 +22,24 @@ class Config implements ConfigContract
 
     /**
      * Config constructor.
-     * @param string|null $file_path
      */
     public function __construct(?string $file_path = null)
+    {
+        $this->init($file_path);
+    }
+
+    /**
+     * @param string|null $file_path
+     * @return void
+     * @throws ConfigException
+     */
+    public function init(?string $file_path = null): void
     {
         if ($file_path === null) {
             $this->config = require_once __DIR__ . '/../config/rubic-cube.php';
         } elseif (file_exists($file_path)) {
             $this->config = require_once $file_path;
         }
-
         $this->validate();
     }
 

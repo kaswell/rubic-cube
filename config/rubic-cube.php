@@ -8,6 +8,15 @@ return [
     'width' => 3,
     'height' => 3,
 
+    /* ---------------------------------------------------------------- */
+
+    'rotators' => [
+        'cube' => \Kaswell\RubicCube\Rotators\CubeRotator::class,
+        'facet' => \Kaswell\RubicCube\Rotators\FacetRotator::class,
+    ],
+
+    /* ---------------------------------------------------------------- */
+
     'theme' => 'cube',
 
     'colors' => [

@@ -5,25 +5,19 @@
 
 namespace Kaswell\RubicCube;
 
-use Kaswell\RubicCube\Contracts\ControlContract;
-use Kaswell\RubicCube\Contracts\RubicContract;
 use Kaswell\RubicCube\Models\Cube;
+use Kaswell\RubicCube\Rotators\RotatorFactory;
 
 /**
  * Class Rubic
  * @package Kaswell\RubicCube
  */
-class Rubic implements RubicContract, ControlContract
+class Rubic
 {
     /**
      * @var Config
      */
     protected Config $config;
-
-    /**
-     * @var Repository
-     */
-    protected Repository $repository;
 
     /**
      * @var Cube
@@ -33,42 +27,38 @@ class Rubic implements RubicContract, ControlContract
     /**
      * Rubic constructor.
      */
-    public function __construct(?string $config_file_path = null)
+    public function __construct()
     {
-        $this->config = new Config($config_file_path);
-
-        $this->repository = new Repository($this->config);
-
-        $this->cube = $this->repository->getCube();
+        $this->config = new Config();
+        $this->cube = new Cube();
     }
 
     /**
-     * @return array
+     * @return Cube
      */
-    public function getCube(): array
+    public function getCube(): Cube
     {
-        return $this->repository->getCube()->getFacets();
+        return $this->cube;
     }
 
     /**
+     * @param string $type
      * @param string $route
      * @param string $direction
-     * @return array
+     * @param int $line
+     * @return $this
      */
-    public function rotateCube(string $route, string $direction): array
+    public function rotate(string $type = 'cube', string $route = 'x', string $direction = '+', int $line = 0)
     {
-        return $this->cube->getFacets();
+        $rotator = new Rotator(new RotatorFactory(), $this->config, $this->cube);
+
+        $this->cube = $rotator->rotate($type, $route, $direction, $line);
+
+        return $this;
     }
 
-
-    public function rotate(string $facet, int $line, string $direction): array
+    public function __destruct()
     {
-        $rotator = new Control($this->cube);
 
-        $this->cube = $rotator->rotate($facet, $line, $direction);
-
-        return $this->cube->getFacets();
     }
-
-
 }

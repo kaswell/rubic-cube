@@ -12,10 +12,10 @@ namespace Kaswell\RubicCube\Contracts;
 interface ConfigContract
 {
     /**
-     * ConfigContract constructor.
      * @param string|null $file_path
+     * @return void
      */
-    public function __construct(?string $file_path = null);
+    public function init(?string $file_path): void;
 
     /**
      * @param string $property

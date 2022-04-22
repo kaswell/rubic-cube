@@ -5,7 +5,7 @@
 
 namespace Kaswell\RubicCube\Models;
 
-use Kaswell\RubicCube\Contracts\CubeContract;
+use Kaswell\RubicCube\Contracts\Models\CubeContract;
 use Kaswell\RubicCube\Exceptions\ValidateException;
 
 /**
@@ -32,18 +32,15 @@ class Cube implements CubeContract
 
     /**
      * @param array $facets
-     * @return $this
+     * @return void
      * @throws ValidateException
      */
-    public function setFacets(array $facets): Cube
+    public function setFacets(array $facets): void
     {
         if (!$this->validate($facets)){
             throw new ValidateException('Wrong facets.');
         }
-
         $this->facets = $facets;
-
-        return $this;
     }
 
     /**
@@ -52,5 +49,13 @@ class Cube implements CubeContract
     public function getFacets(): array
     {
         return $this->facets;
+    }
+
+    /**
+     * @return int[]
+     */
+    public function getSize(): array
+    {
+        return [3, 3];
     }
 }

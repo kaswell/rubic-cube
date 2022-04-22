@@ -8,10 +8,10 @@ namespace Kaswell\RubicCube\Exceptions;
 use Exception;
 
 /**
- * Class ValidateException
+ * Class InvalidArgumentException
  * @package Kaswell\RubicCube\Exceptions
  */
-class ValidateException extends Exception
+class InvalidArgumentException extends Exception
 {
 
 }
