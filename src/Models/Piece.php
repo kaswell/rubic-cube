@@ -10,7 +10,11 @@ use Ramsey\Uuid\Uuid;
 
 class Piece
 {
-    protected $uuid;
+    /**
+     * @var string|\Ramsey\Uuid\UuidInterface
+     */
+    protected string $uuid;
+    protected $position;
 
     public function __construct()
     {
