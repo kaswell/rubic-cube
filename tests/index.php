@@ -8,4 +8,4 @@ use Ramsey\Uuid\Uuid;
 require __DIR__ . '/../vendor/autoload.php';
 
 
-print_r(Uuid::uuid4());
+print_r(new \Kaswell\RubicCube\Models\Piece());
