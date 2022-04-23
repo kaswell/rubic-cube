@@ -8,7 +8,6 @@ namespace Kaswell\RubicCube;
 use Kaswell\RubicCube\Contracts\ConfigContract as Config;
 use Kaswell\RubicCube\Contracts\Models\CubeContract as Cube;
 use Kaswell\RubicCube\Contracts\Rotator\RotatorFactoryContract as RotatorFactory;
-use Kaswell\RubicCube\Rotators\AbstractRotator;
 
 class Rotator
 {
